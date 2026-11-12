@@ -1,0 +1,12 @@
+# @package _global_
+# The fastest setting, not part of the paper: a warm start as in
+# warm_start_detailed, and guidance gradients taken at the denoised estimate
+# instead of through the model. Add to any experiment.
+
+sampler:
+  steps: 35
+  sigma_max: 1
+  start: candidate
+
+guidance:
+  jacobian: false

@@ -1,0 +1,47 @@
+# @package _global_
+# SimDPS-Relaxed on the waveform-domain piano model (Sec. 4.2).
+
+method: relaxed
+
+prior:
+  name: cqtdiff
+  checkpoint: null
+
+buffer: 0
+
+observation:
+  zeta: 0.3
+  loss: comp_stft
+  compression: 0.3
+
+search:
+  n: 5
+  rate: 16000
+  refine: 256
+  crossfade: 0.1
+  stft: {context: 2.0, weight: 1.0, n_fft: 1024, hop_length: 256}
+  chroma: {context: 5.0, weight: 1.5, n_fft: 1024, hop_length: 256}
+
+candidates:
+  weight: 0.04
+  combine: min
+  distance: comp_stft
+  compression: 0.3
+  taper: null
+  stop: 0
+  fade: 0
+
+guidance:
+  project: false
+  jacobian: true
+  joint: true
+
+sampler:
+  steps: 50
+  sigma_min: 1e-5
+  sigma_max: 8
+  rho: 10
+  churn: 10
+  churn_range: [0, 10]
+  order: 2
+  start: noise

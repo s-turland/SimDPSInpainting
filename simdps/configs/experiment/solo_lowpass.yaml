@@ -1,0 +1,40 @@
+# @package _global_
+# SimDPS-Solo with the low-pass distance: the best match guides only the coarse
+# structure of the gap.
+
+method: solo
+
+prior:
+  name: acestep
+
+buffer: 20
+
+observation:
+  zeta: 0.5
+
+search:
+  n: 1
+  context: 5
+  crossfade: 5
+
+candidates:
+  weight: 0.35
+  combine: solo
+  distance: lowpass
+  cutoff: 15
+  taper: null
+  stop: 0.5
+  fade: 0.5
+
+guidance:
+  project: true
+  jacobian: true
+
+sampler:
+  steps: 100
+  sigma_min: 1e-3
+  sigma_max: 20
+  rho: 7
+  churn: 10
+  order: 1
+  start: candidate

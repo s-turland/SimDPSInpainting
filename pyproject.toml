@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "simdps"
+dynamic = ["version"]
+description = "Similarity-guided diffusion posterior sampling for long-gap music inpainting"
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [{ name = "Sean Turland" }]
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.6",
+    "numpy",
+    "scipy",
+    "soundfile",
+    "huggingface_hub",
+    "pyyaml",
+]
+
+[project.optional-dependencies]
+acestep = ["diffusers>=0.30", "transformers>=4.50,<5.20", "safetensors", "accelerate"]
+piano = ["einops"]
+test = ["pytest", "ruff", "einops"]
+docs = ["sphinx", "sphinx-rtd-theme", "nbsphinx"]
+
+[project.scripts]
+simdps = "simdps.cli:main"
+
+[project.urls]
+Homepage = "https://s-turland.github.io/SimDPSInpainting/"
+Source = "https://github.com/s-turland/SimDPSInpainting"
+
+[tool.setuptools.dynamic]
+version = { attr = "simdps.__version__" }
+
+[tool.setuptools.packages.find]
+include = ["simdps*"]
+
+[tool.pytest.ini_options]
+markers = ["slow: downloads model weights, needs a GPU"]
+addopts = "-m 'not slow'"
+
+[tool.setuptools.package-data]
+"simdps._vendor.acestep" = ["LICENSE"]
+"simdps._vendor.cqtdiff" = ["LICENSE"]
+"simdps" = ["web/*", "configs/*/*.yaml"]
+
+[tool.ruff]
+line-length = 120
+extend-exclude = ["simdps/_vendor", "*.ipynb"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["E731"]

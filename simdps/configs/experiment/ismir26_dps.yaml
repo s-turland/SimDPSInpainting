@@ -1,0 +1,25 @@
+# @package _global_
+# Unguided DPS on ACE-Step 1.5, the baseline of Sec. 4.1.
+
+method: dps
+
+prior:
+  name: acestep
+
+buffer: 20
+
+observation:
+  zeta: 0.5
+
+guidance:
+  project: true
+  jacobian: true
+
+sampler:
+  steps: 100
+  sigma_min: 1e-3
+  sigma_max: 20
+  rho: 7
+  churn: 10
+  order: 1
+  start: noise

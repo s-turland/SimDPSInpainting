@@ -1,0 +1,8 @@
+# @package _global_
+# Faster than the paper's schedule, not part of it: starts from the best match
+# at a low noise level, and takes fewer steps. Add to any experiment.
+
+sampler:
+  steps: 40
+  sigma_max: 1
+  start: candidate

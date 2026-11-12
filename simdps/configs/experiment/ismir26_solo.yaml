@@ -1,0 +1,41 @@
+# @package _global_
+# SimDPS-Solo on ACE-Step 1.5 (Sec. 3.1 and 4.1).
+# Set candidates.distance to lowpass to follow the coarse structure only;
+# solo_lowpass.yaml has the settings tuned for that.
+
+method: solo
+
+prior:
+  name: acestep
+
+buffer: 20
+
+observation:
+  zeta: 0.5
+
+search:
+  n: 1
+  context: 5
+  crossfade: 5
+
+candidates:
+  weight: 0.3
+  combine: solo
+  distance: l2
+  cutoff: 15            # used by the lowpass and magnitude distances
+  taper: null
+  stop: 1e-3
+  fade: 0.1
+
+guidance:
+  project: true
+  jacobian: true
+
+sampler:
+  steps: 100
+  sigma_min: 1e-3
+  sigma_max: 20
+  rho: 7
+  churn: 10
+  order: 1
+  start: noise

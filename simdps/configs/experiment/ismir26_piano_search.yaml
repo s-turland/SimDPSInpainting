@@ -1,0 +1,17 @@
+# @package _global_
+# Sim, the baseline of Sec. 4.2: the best match copied into the gap.
+
+method: search
+
+prior:
+  name: cqtdiff
+  checkpoint: null
+
+buffer: 0
+
+search:
+  rate: 16000
+  refine: 256
+  crossfade: 0.1
+  stft: {context: 2.0, weight: 1.0, n_fft: 1024, hop_length: 256}
+  chroma: {context: 5.0, weight: 1.5, n_fft: 1024, hop_length: 256}

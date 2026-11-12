@@ -1,0 +1,49 @@
+# @package _global_
+# SimDPS-Strict on the waveform-domain piano model (Sec. 4.2).
+# Point prior.checkpoint at the trained model, here or with
+#   simdps inpaint take.wav --gap 2 4 --config ismir26_piano_strict --set prior.checkpoint=piano.pt
+
+method: strict
+
+prior:
+  name: cqtdiff
+  checkpoint: null
+
+buffer: 0
+
+observation:
+  zeta: 0.3             # omega_Y
+  loss: comp_stft
+  compression: 0.3
+
+search:
+  n: 5
+  rate: 16000           # sample rate of the search
+  refine: 256           # samples of boundary alignment
+  crossfade: 0.1        # seconds
+  stft: {context: 2.0, weight: 1.0, n_fft: 1024, hop_length: 256}
+  chroma: {context: 5.0, weight: 1.5, n_fft: 1024, hop_length: 256}
+
+candidates:
+  weight: 0.15          # omega_X
+  combine: min
+  distance: comp_stft
+  compression: 0.3
+  taper: null
+  stop: 0
+  fade: 0
+
+guidance:
+  project: false
+  jacobian: true
+  joint: true           # one gradient for both terms, scaled by omega_Y
+
+sampler:
+  steps: 50
+  sigma_min: 1e-5
+  sigma_max: 8
+  rho: 10
+  churn: 10
+  churn_range: [0, 10]
+  order: 2
+  start: noise
