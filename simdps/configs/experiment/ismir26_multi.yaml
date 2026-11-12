@@ -1,0 +1,39 @@
+# @package _global_
+# SimDPS-Multi on ACE-Step 1.5 (Sec. 3.1.1 and 4.1).
+
+method: multi
+
+prior:
+  name: acestep
+
+buffer: 20              # frames regenerated on each side of the gap
+
+observation:
+  zeta: 0.5             # omega_Y
+
+search:
+  n: 15                 # K, the candidates kept
+  context: 5            # frames compared on each side of the gap
+  crossfade: 5          # frames blending each candidate into the context
+
+candidates:
+  weight: 0.1           # omega_X
+  combine: weighted     # weighted, solo, min or mean
+  distance: lowpass     # lowpass, magnitude, l2 or comp_stft
+  cutoff: 8             # first discarded bin of the low-pass filter
+  taper: 0.5            # Tukey window over the gap
+  stop: 0.5             # sigma_multi
+  fade: 0.5             # exponent of the decay of the weight with the noise level
+
+guidance:
+  project: true
+  jacobian: true
+
+sampler:
+  steps: 100
+  sigma_min: 1e-3
+  sigma_max: 20
+  rho: 7
+  churn: 10
+  order: 1
+  start: candidate      # candidate or noise

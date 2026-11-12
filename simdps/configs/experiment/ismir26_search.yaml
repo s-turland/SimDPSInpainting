@@ -1,0 +1,13 @@
+# @package _global_
+# Latent-Sim, the baseline of Sec. 4.1: the best match inserted into the gap.
+
+method: search
+
+prior:
+  name: acestep
+
+buffer: 20
+
+search:
+  context: 5
+  crossfade: 5

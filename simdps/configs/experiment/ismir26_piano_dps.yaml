@@ -1,0 +1,29 @@
+# @package _global_
+# Unguided DPS on the piano model, the baseline of Sec. 4.2.
+
+method: dps
+
+prior:
+  name: cqtdiff
+  checkpoint: null
+
+buffer: 0
+
+observation:
+  zeta: 0.3
+  loss: comp_stft
+  compression: 0.3
+
+guidance:
+  project: false
+  jacobian: true
+
+sampler:
+  steps: 50
+  sigma_min: 1e-5
+  sigma_max: 8
+  rho: 10
+  churn: 10
+  churn_range: [0, 10]
+  order: 2
+  start: noise

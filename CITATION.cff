@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: If you use this code, please cite the paper.
+title: SimDPS
+version: 0.1.0
+license: MIT
+repository-code: https://github.com/s-turland/SimDPSInpainting
+authors:
+  - family-names: Turland
+    given-names: Sean
+preferred-citation:
+  type: conference-paper
+  title: Music Inpainting with Similarity-Guided Latent Diffusion
+  authors:
+    - family-names: Turland
+      given-names: Sean
+    - family-names: Moliner
+      given-names: Eloi
+    - family-names: Välimäki
+      given-names: Vesa
+  collection-title: Proc. Int. Society for Music Information Retrieval Conf. (ISMIR)
+  year: 2026
