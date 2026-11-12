@@ -98,6 +98,22 @@ name a custom function that builds the prior (`prior: {target:
 "my_package.models:make_prior"}`), so that a new model is one more YAML file. See
 the documentation for details.
 
+## Web interface (experimental)
+
+```
+simdps app
+```
+
+opens an experimental interface in the browser, served from a local server. 
+The app demonstrates the joint search and diffusion editing capabilities 
+alongside an audio editor, for creative, iterative use.
+Select the gap on the waveform, search the recording for matching candidates,
+choose which ones guide the model and with what weighting distribution, and compare the
+results against the original. Intermediate estimates along the way can be heard
+and sampled again with new seeds. Any audio can be banked and saved for use in further inpainting edits.
+Results vary widely, depending on the input and settings used. See the
+[quickstart](docs/quickstart.rst) for more information.
+
 ## Citation
 
 ```bibtex
@@ -123,15 +139,4 @@ MIT. `simdps/_vendor/acestep` is from
 Apache License 2.0. `simdps/_vendor/cqtdiff` is based on
 [CQTdiff](https://github.com/eloimoliner/CQTdiff), under the MIT license.
 
-## Web interface (experimental)
 
-```
-simdps app
-```
-
-opens an experimental interface in the browser, served from your own machine.
-Mark the gap on the waveform, search the recording for matching passages,
-choose which ones guide the model and with what weight, and compare the
-results with the original. Intermediate estimates along the way can be heard
-and sampled again with new seeds. Expect rough edges; see the
-[quickstart](docs/quickstart.rst) for its options.
