@@ -53,15 +53,15 @@ simdps.save_audio("take_simdps.wav", out.audio[0], out.sample_rate)
 `method` selects SimDPS-Multi (`"multi"`, default), SimDPS-Solo (`"solo"`),
 plain DPS (`"dps"`) or the search candidates without diffusion
 (`"search"`). With `source`, the candidates come from another recording or a
-folder of them, which can be used to steer a gap towards different material.
+folder of audio, which can be used to steer a gap towards different material.
 `method="search"` lists the matches to choose from with `candidates`, and
-`guide` names a passage by time instead.
+`guide` selects a passage by time instead.
 
 ## Configs
 
 Every setting of an experiment is in one YAML file, in
-[`simdps/configs`](simdps/configs). Copy one and edit it, or change single
-settings as you go:
+[`simdps/configs`](simdps/configs). Edit a config file, or change single
+settings:
 
 ```
 simdps inpaint take.wav --gap 62.5 64.5 --config my_experiment.yaml
@@ -75,8 +75,8 @@ model.inpaint(audio, sr, gap, weight=0.2)
 ```
 
 The defaults are the settings of the paper, about 55 s per gap on an 8 GB laptop
-GPU. `warm_start_detailed` (17 s) and `warm_start_fast` (7 s) are faster: they
-start from the best match at a low noise level, and go on top of any experiment.
+GPU. `warm_start_detailed` (17 s) and `warm_start_fast` (7 s) are faster as they
+start from a renoised match at a low noise level. These speed setting work alongside any experiment config.
 
 ## Using another model
 
@@ -94,7 +94,7 @@ model = Inpainter(prior)
 
 `EDMPrior` covers networks trained with the EDM preconditioning, and
 `DenoiserPrior` any model that already provides `denoise(x, sigma)`. A config can
-name a custom function that builds the prior (`prior: {target:
+define a custom function that builds the prior (`prior: {target:
 "my_package.models:make_prior"}`), so that a new model is one more YAML file. See
 the documentation for details.
 
