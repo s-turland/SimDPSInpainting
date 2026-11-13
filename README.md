@@ -104,15 +104,15 @@ the documentation for details.
 simdps app
 ```
 
-opens an experimental interface in the browser, served from a local server. 
-The app demonstrates the joint search and diffusion editing capabilities 
-alongside an audio editor, for creative, iterative use.
-Select the gap on the waveform, search the recording for matching candidates,
-choose which ones guide the model and with what weighting distribution, and compare the
-results against the original. Intermediate estimates along the way can be heard
-and sampled again with new seeds. Any audio can be banked and saved for use in further inpainting edits.
-Results vary widely, depending on the input and settings used. See the
-[quickstart](docs/quickstart.rst) for more information.
+This is an experimental browser interface that I used when testing out different configuration settings, and the audio playback UI in particular helps when selecting specific gaps to inpaint. The app demonstrates the joint search and diffusion editing capabilities 
+alongside an audio editor, for creative use over repeated editing iterations.
+I had a lot of fun playing around with it, and maybe others will find some creative sample-editing uses for it too. 
+
+Intermediate estimates along the trajectory can be listened to, revealing how diffusion-based audio is generated at various noise levels. 
+Any audio can be banked and saved for use in further edits. I found this interesting to use when layering up different influences, such as a kantele over a speech signal. 
+Used in coordination with timbre-specific pretrained priors (e.g. a piano model) can lead to particularly interesting results. 
+Results vary and are intended for experimental sound design. See more at
+[quickstart](docs/quickstart.rst) for additional information.
 
 ## Citation
 
