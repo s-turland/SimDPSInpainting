@@ -7,7 +7,7 @@ Similarity-Guided Latent Diffusion*, presented at ISMIR 2026.
 SimDPS fills a missing segment of a recording by searching an audio source for
 sections whose surrounding context matches that of the gap. The source can be the same
 recording, an unrelated track or a corpus of signals. The chosen sections
-guide a pretrained diffusion model without any additional training and can be applied to
+guide a pretrained diffusion model to inpaint the gap without any additional training. The method can be applied to
 any diffusion models in the waveform or latent domain.
 
 [Paper](https://s-turland.github.io/SimDPSInpainting/) |
