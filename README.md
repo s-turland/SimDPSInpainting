@@ -21,8 +21,8 @@ any diffusion models in the waveform or latent domain.
 pip install "simdps[acestep] @ git+https://github.com/s-turland/SimDPSInpainting"
 ```
 
-SimDPS needs Python 3.10 or later and at least PyTorch 2.6. The ACE-Step weights
-(about 5 GB) are downloaded on first use. Experiments were conducted on a slurm-based HPC system. If using on a personal machine, we recommend using a GPU with at least 8 GB of memory.
+SimDPS needs Python 3.10 or later and at least PyTorch 2.6. The default ACE-Step weights
+(about 5 GB) are downloaded upon first use. Experiments were conducted on a slurm-based HPC system; if using on a personal machine, we recommend using a GPU with at least 8 GB of memory.
 
 ## Usage
 
