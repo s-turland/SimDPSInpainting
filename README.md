@@ -75,13 +75,12 @@ model.inpaint(audio, sr, gap, weight=0.2)
 ```
 
 The defaults are the settings of the paper, about 55 s per gap on an 8 GB laptop
-GPU. `warm_start_detailed` (17 s) and `warm_start_fast` (7 s) are faster as they
-start from a renoised match at a low noise level. These speed setting work alongside any experiment config.
+GPU.
 
 ## Using another model
 
-Any denoiser can be used through `simdps.priors`. For a model trained with
-rectified flow on the latents of some autoencoder:
+Any PyTorch-based denoiser can be used via the `simdps.priors` setting. For a model trained with
+rectified flow on the latents of a separate autoencoder:
 
 ```python
 from simdps import Inpainter
@@ -92,10 +91,9 @@ prior = FlowPrior(net, sample_rate=44100, length=512,
 model = Inpainter(prior)
 ```
 
-`EDMPrior` covers networks trained with the EDM preconditioning, and
-`DenoiserPrior` any model that already provides `denoise(x, sigma)`. A config can
+`EDMPrior` covers networks trained with EDM preconditioning. A config can
 define a custom function that builds the prior (`prior: {target:
-"my_package.models:make_prior"}`), so that a new model is one more YAML file. See
+"my_package.models:make_prior"}`). See
 the documentation for details.
 
 ## Web interface (experimental)
@@ -109,8 +107,8 @@ alongside an audio editor, for creative use over repeated editing iterations.
 I had a lot of fun playing around with it, and maybe others will find some creative sample-editing uses for it too. 
 
 Intermediate estimates along the trajectory can be listened to, revealing how diffusion-based audio is generated at various noise levels. 
-Any audio can be banked and saved for use in further edits. I found this interesting to use when layering up different influences, such as a kantele over a speech signal. 
-Used in coordination with timbre-specific pretrained priors (e.g. a piano model) can lead to particularly interesting results. 
+Any audio can be saved to a bank, and used in further inpainting guidance edits. I found this interesting to use when layering up different influences, such as a kantele over a speech signal. 
+Used in coordination with timbre-specific pretrained priors (e.g. a piano model) can lead to particularly interesting results, where the frequency response of the prior distribution is more constrained than a general music model. 
 Results vary and are intended for experimental sound design. See more at
 [quickstart](docs/quickstart.rst) for additional information.
 
