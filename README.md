@@ -5,9 +5,9 @@ long gaps in music recordings. This is the public code for the paper *Music Inpa
 Similarity-Guided Latent Diffusion*, presented at ISMIR 2026.
 
 SimDPS fills a missing segment of a recording by searching an audio source for
-passages whose surrounding context matches that of the gap. The source can be the same
-recording, an unrelated recording or a corpus of signals. The passages
-guide a pretrained diffusion model without any additional training and operates with
+sections whose surrounding context matches that of the gap. The source can be the same
+recording, an unrelated track or a corpus of signals. The chosen sections
+guide a pretrained diffusion model without any additional training and can be applied to
 any diffusion models in the waveform or latent domain.
 
 [Paper](https://s-turland.github.io/SimDPSInpainting/) |
@@ -21,8 +21,8 @@ any diffusion models in the waveform or latent domain.
 pip install "simdps[acestep] @ git+https://github.com/s-turland/SimDPSInpainting"
 ```
 
-SimDPS needs Python 3.10 or later and  at least PyTorch 2.6. The ACE-Step weights
-(about 5 GB) are downloaded on first use. We recommend using a GPU with at least 8 GB of memory.
+SimDPS needs Python 3.10 or later and at least PyTorch 2.6. The ACE-Step weights
+(about 5 GB) are downloaded on first use. Experiments were conducted on a slurm-based HPC system. If using on a personal machine, we recommend using a GPU with at least 8 GB of memory.
 
 ## Usage
 
